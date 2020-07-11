@@ -1,2 +1,5 @@
-# Booking-section
-Call to action section for booking tours
+# Tours company
+
+## Booking section demo
+
+- **Call to action** section for booking tours
