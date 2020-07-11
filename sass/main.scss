@@ -1,25 +1,228 @@
 ////////  VARIABLES
+$color-green-light: #55c57a;
+$color-green-primary: #26d661;
+$color-green-dark: #44a832;
 
+$color-orange-light: #ffb900;
+$color-orange-dark: #ff7730;
 
+$color-grey-light: #777;
+$color-grey-dark: #999;
+
+$color-blue-light: #2998ff;
+$color-blue-dark: #5643fa;
 /////////////////////////
 /////////// MIXINS
-
-
 
 ////////////////////////
 *,
 *::before,
 *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: "Lato", sans-serif;
-    box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+  padding: 3rem;
+  color: $color-grey-light;
+}
+
+.section-booking {
+  padding: 15rem 0;
+  background: linear-gradient(
+    to right bottom,
+    $color-green-light,
+    $color-green-dark
+  );
+
+  height: 70rem;
+}
+
+.book-box {
+  width: 70%;
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 50%
+    ),
+    url(../image/nat-10.jpg);
+  background-size: cover;
+  border-radius: 4px;
+  box-shadow: 0 2rem 2.5rem rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+
+  min-height: 40rem;
+}
+
+.book-form {
+  width: 50%;
+  padding: 3rem 2.5rem;
+  // border: 1px solid black;
+}
+
+.heading-teriary {
+  text-align: left;
+  &__text {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      $color-green-primary,
+      $color-green-dark
+    );
+    transition: all 0.2s;
+
+    &:hover {
+      transform: skewY(3deg) skewX(10deg) scale(1.1);
+      text-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+.form-group {
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.form-input {
+  display: inline-block;
+  width: 77%;
+  font-size: 1.6rem;
+  padding: 1.2rem 2rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 2px;
+  font-family: inherit;
+  color: inherit;
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
+    border-bottom: 4px solid $color-green-primary;
+  }
+
+  &:focus:invalid {
+    border-bottom: 4px solid $color-orange-dark;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $color-grey-dark;
+  }
+
+  &:placeholder-shown + .form-label {
+    transform: translateY(-4.5rem);
+    opacity: 0;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-top: 0.7rem;
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  color: rgb(58, 51, 51);
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.form__radio-group {
+  // padding: 1rem;
+  display: inline-block;
+  // border: 2px solid black;
+
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.form__radio-input {
+  visibility: hidden;
+
+  &:checked + .form__radio-label::after {
+    background-color: $color-green-primary;
+  }
+}
+
+.form__radio-label {
+  font-size: 2rem;
+  color: $color-green-dark;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  margin-left: 3rem;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    display: inline-block;
+    // background-color: $color-green-primary;
+
+    position: absolute;
+    top: 0.5rem;
+    left: -3.2rem;
+  }
+}
+.form__radio-btn {
+  display: inline-block;
+  width: 2.3rem;
+  height: 2.3rem;
+  border: 3px solid $color-green-primary;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: -3.7rem;
+}
+
+.btn {
+  // padding: 1.5rem 4.5rem;
+  margin-top: 3rem;
+  font-size: 1.8rem;
+  height: 5rem;
+  width: 16rem;
+  color: white;
+  background-color: $color-green-primary;
+  border-radius: 50px;
+  border: none;
+  text-transform: lowercase;
+  position: relative;
+  z-index: 100;
+
+  &:hover::after {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: $color-green-primary;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.2s;
+  }
 }
